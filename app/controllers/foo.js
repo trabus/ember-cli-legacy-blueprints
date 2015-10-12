@@ -1,0 +1,1 @@
+export { default } from 'ember-cli-legacy-blueprints/controllers/foo';
