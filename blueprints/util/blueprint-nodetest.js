@@ -1,20 +1,47 @@
 'use strict';
 
 var EOL                = require('os').EOL;
-var tmpenv             = require('ember-cli-blueprint-test-helpers/lib/helpers/tmp-env');
 var setupTestHooks     = require('ember-cli-blueprint-test-helpers/lib/helpers/setup');
 var BlueprintHelpers   = require('ember-cli-blueprint-test-helpers/lib/helpers/blueprint-helper');
 var generateAndDestroy = BlueprintHelpers.generateAndDestroy;
 
 describe('Acceptance: ember generate and destroy util', function() {
-  setupTestHooks(this, 20000, tmpenv);;
+  setupTestHooks(this);
   
-  it('util foo', function() {
-    // pass any additional command line options in the arguments array
-    return generateAndDestroy(['util', 'foo'], {
-      // define files to assert, and their contents
+  it('util foo-bar', function() {
+    return generateAndDestroy(['util', 'foo-bar'], {
       files: [
-        // { file: 'app/type/foo.js', contents: ['foo']}
+        {
+          file: 'app/utils/foo-bar.js',
+          contains: 'export default function fooBar() {' + EOL +
+                    '  return true;' + EOL +
+                    '}'
+        },
+        {
+          file: 'tests/unit/utils/foo-bar-test.js',
+          contains: [
+            "import fooBar from '../../../utils/foo-bar';"
+          ]
+        }
+      ]
+    });
+  });
+
+  it('util foo-bar/baz', function() {
+    return generateAndDestroy(['util', 'foo/bar-baz'], {
+      files: [
+        {
+          file: 'app/utils/foo/bar-baz.js',
+          contains: 'export default function fooBarBaz() {' + EOL +
+                    '  return true;' + EOL +
+                    '}'
+        },
+        {
+          file: 'tests/unit/utils/foo/bar-baz-test.js',
+          contains: [
+            "import fooBarBaz from '../../../utils/foo/bar-baz';"
+          ]
+        }
       ]
     });
   });

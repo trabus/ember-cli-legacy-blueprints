@@ -1,20 +1,51 @@
 'use strict';
 
 var EOL                = require('os').EOL;
-var tmpenv             = require('ember-cli-blueprint-test-helpers/lib/helpers/tmp-env');
 var setupTestHooks     = require('ember-cli-blueprint-test-helpers/lib/helpers/setup');
 var BlueprintHelpers   = require('ember-cli-blueprint-test-helpers/lib/helpers/blueprint-helper');
 var generateAndDestroy = BlueprintHelpers.generateAndDestroy;
 
 describe('Acceptance: ember generate and destroy service', function() {
-  setupTestHooks(this, 20000, tmpenv);;
+  setupTestHooks(this);
   
   it('service foo', function() {
-    // pass any additional command line options in the arguments array
     return generateAndDestroy(['service', 'foo'], {
-      // define files to assert, and their contents
       files: [
-        // { file: 'app/type/foo.js', contents: ['foo']}
+        {
+          file: 'app/services/foo.js',
+          contains: [
+            "import Ember from 'ember';",
+            'export default Ember.Service.extend({' + EOL + '});'
+          ]
+        },
+        {
+          file: 'tests/unit/services/foo-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('service:foo'"
+          ]
+        }
+      ]
+    });
+  });
+
+  it('service foo/bar', function() {
+    return generateAndDestroy(['service', 'foo/bar'], {
+      files: [
+        {
+          file: 'app/services/foo/bar.js',
+          contains: [
+            "import Ember from 'ember';",
+            'export default Ember.Service.extend({' + EOL + '});'
+          ]
+        },
+        {
+          file: 'tests/unit/services/foo/bar-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('service:foo/bar'"
+          ]
+        }
       ]
     });
   });

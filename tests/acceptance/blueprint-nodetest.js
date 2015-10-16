@@ -2,14 +2,13 @@
 
 var assertFile       = require('ember-cli-internal-test-helpers/lib/helpers/assert-file');
 var EOL              = require('os').EOL;
-var tmpenv           = require('ember-cli-blueprint-test-helpers/lib/helpers/tmp-env');
 var setupTestHooks   = require('ember-cli-blueprint-test-helpers/lib/helpers/setup');
 var BlueprintHelpers = require('ember-cli-blueprint-test-helpers/lib/helpers/blueprint-helper');
 var generate            = BlueprintHelpers.generate;
 var destroy             = BlueprintHelpers.destroy;
 var generateAndDestroy  = BlueprintHelpers.generateAndDestroy;
 describe('Acceptance: ember generate', function() {
-  setupTestHooks(this, 20000, tmpenv);
+  setupTestHooks(this);
 
   it('.ember-cli usePods setting generates in pod structure without --pod flag', function() {
     return generate(['controller', 'foo'], {usePods:true}).then(function() {
