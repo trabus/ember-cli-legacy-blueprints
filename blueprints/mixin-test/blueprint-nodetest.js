@@ -20,5 +20,18 @@ describe('Acceptance: ember generate and destroy mixin-test', function() {
       ]
     });
   });
-
+  
+  it('in-addon mixin-test foo', function() {
+    return generateAndDestroy(['mixin-test', 'foo'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/mixins/foo-test.js',
+          contains: [
+            "import FooMixin from '../../../mixins/foo';"
+          ]
+        }
+      ]
+    });
+  });
 });

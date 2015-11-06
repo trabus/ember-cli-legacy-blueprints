@@ -40,5 +40,68 @@ describe('Acceptance: ember generate and destroy component-test', function() {
       ]
     });
   });
+  
+  it('in-addon component-test x-foo', function() {
+    return generateAndDestroy(['component-test', 'x-foo'], {
+      target: 'addon',
+      files: [
+        {
+          file:'tests/integration/components/x-foo-test.js',
+          contains: [
+            "import { moduleForComponent, test } from 'ember-qunit';",
+            "import hbs from 'htmlbars-inline-precompile';",
+            "moduleForComponent('x-foo'",
+            "integration: true",
+            "{{x-foo}}",
+            "{{#x-foo}}"
+          ]
+        },
+        {
+          file: 'app/component-test/x-foo.js',
+          exists: false
+        }
+      ]
+    });
+  });
+
+  it('in-addon component-test x-foo --unit', function() {
+    return generateAndDestroy(['component-test', 'x-foo', '--unit'], {
+      target: 'addon',
+      files: [
+        {
+          file:'tests/unit/components/x-foo-test.js',
+          contains: [
+            "import { moduleForComponent, test } from 'ember-qunit';",
+            "moduleForComponent('x-foo'",
+            "unit: true"
+          ]
+        },
+        {
+          file: 'app/component-test/x-foo.js',
+          exists: false
+        }
+      ]
+    });
+  });
+  
+  it('dummy component-test x-foo', function() {
+    return generateAndDestroy(['component-test', 'x-foo', '--dummy'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/integration/components/x-foo-test.js',
+          contains: [
+            "import { moduleForComponent, test } from 'ember-qunit';",
+            "import hbs from 'htmlbars-inline-precompile';",
+            "moduleForComponent('x-foo'"
+          ]
+        },
+        {
+          file: 'app/component-test/x-foo.js',
+          exists: false
+        }
+      ]
+    });
+  });
 
 });

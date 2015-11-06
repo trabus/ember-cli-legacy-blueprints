@@ -22,5 +22,39 @@ describe('Acceptance: ember generate and destroy model-test', function() {
       ]
     });
   });
-
+  
+  it('in-addon model-test foo', function() {
+    return generateAndDestroy(['model-test', 'foo'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/models/foo-test.js',
+          contains: [
+            "import { moduleForModel, test } from 'ember-qunit';",
+            "moduleForModel('foo'"
+          ]
+        }
+      ]
+    });
+  });
+  
+  it('dummy model-test foo', function() {
+    return generateAndDestroy(['model-test', 'foo', '--dummy'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/models/foo-test.js',
+          contains: [
+            "import { moduleForModel, test } from 'ember-qunit';",
+            "moduleForModel('foo'"
+          ]
+        },
+        {
+          file: 'app/model-test/foo.js',
+          exists: false
+        }
+      ]
+    });
+  });
+  
 });

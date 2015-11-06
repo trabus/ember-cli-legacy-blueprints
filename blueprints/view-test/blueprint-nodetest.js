@@ -21,5 +21,20 @@ describe('Acceptance: ember generate and destroy view-test', function() {
       ]
     });
   });
-
+  
+  it('in-addon view-test foo', function() {
+    return generateAndDestroy(['view-test', 'foo'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/views/foo-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('view:foo'"
+          ]
+        }
+      ]
+    });
+  });
+  
 });

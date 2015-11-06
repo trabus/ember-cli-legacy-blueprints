@@ -20,5 +20,19 @@ describe('Acceptance: ember generate and destroy util-test', function() {
       ]
     });
   });
-
+  
+  it('in-addon util-test foo-bar', function() {
+    return generateAndDestroy(['util-test', 'foo-bar'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/utils/foo-bar-test.js',
+          contains: [
+            "import fooBar from '../../../utils/foo-bar';"
+          ]
+        }
+      ]
+    });
+  });
+  
 });

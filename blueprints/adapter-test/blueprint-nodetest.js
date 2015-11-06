@@ -9,13 +9,36 @@ describe('Acceptance: ember generate and destroy adapter-test', function() {
   setupTestHooks(this);
   
   it('adapter-test foo', function() {
-    // pass any additional command line options in the arguments array
     return generateAndDestroy(['adapter-test', 'foo'], {
-      // define files to assert, and their contents
       files: [
-        // { file: 'app/type/foo.js', contents: ['foo']}
+        {
+          file:'tests/unit/adapters/foo-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('adapter:foo'"
+          ]
+        }
       ]
     });
   });
-
+  
+  it('in-addon adapter-test foo', function() {
+    return generateAndDestroy(['adapter-test', 'foo'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/adapters/foo-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('adapter:foo'"
+          ]
+        },
+        {
+          file: 'app/adapter-test/foo.js',
+          exists: false
+        }
+      ]
+    });
+  });
+  
 });

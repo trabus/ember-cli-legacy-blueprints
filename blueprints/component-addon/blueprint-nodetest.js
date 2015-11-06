@@ -14,9 +14,11 @@ describe('Acceptance: ember generate and destroy component-addon', function() {
       target: 'addon',
       // define files to assert, and their contents
       files: [
-        { file: 'app/component/foo-bar.js', contents: ['foo']}
+        { 
+          file: 'app/components/foo-bar.js', 
+          contents: "export { default } from 'my-addon/components/foo-bar';"
+        }
       ]
     });
   });
-
 });

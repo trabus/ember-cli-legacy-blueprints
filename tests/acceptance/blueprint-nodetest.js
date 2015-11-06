@@ -1,5 +1,6 @@
 'use strict';
 
+var expect           = require('chai').expect;
 var assertFile       = require('ember-cli-internal-test-helpers/lib/helpers/assert-file');
 var EOL              = require('os').EOL;
 var setupTestHooks   = require('ember-cli-blueprint-test-helpers/lib/helpers/setup');
@@ -7,23 +8,33 @@ var BlueprintHelpers = require('ember-cli-blueprint-test-helpers/lib/helpers/blu
 var generate            = BlueprintHelpers.generate;
 var destroy             = BlueprintHelpers.destroy;
 var generateAndDestroy  = BlueprintHelpers.generateAndDestroy;
-describe('Acceptance: ember generate', function() {
+describe('Acceptance: legacy-blueprints', function() {
   setupTestHooks(this);
-
+  it('setup', function(){
+    return generate(['controller', 'foo'], {
+      assertions: [true]
+    });
+  });
+  
   it('.ember-cli usePods setting generates in pod structure without --pod flag', function() {
-    return generate(['controller', 'foo'], {usePods:true}).then(function() {
-    assertFile('app/foo/controller.js', {
-        contains: [
-          "import Ember from 'ember';",
-          "export default Ember.Controller.extend({" + EOL + "});"
-        ]
-      });
-      assertFile('tests/unit/foo/controller-test.js', {
-        contains: [
-          "import { moduleFor, test } from 'ember-qunit';",
-          "moduleFor('controller:foo'"
-        ]
-      });
+    return generateAndDestroy(['controller', 'foo'], {
+      usePods: true,
+      files: [
+        {
+          file: 'app/foo/controller.js',
+          contains: [
+            "import Ember from 'ember';",
+            "export default Ember.Controller.extend({" + EOL + "});"
+          ]
+        }, 
+        {
+          file: 'tests/unit/foo/controller-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('controller:foo'"
+          ]
+        }
+      ]
     });
   });
   

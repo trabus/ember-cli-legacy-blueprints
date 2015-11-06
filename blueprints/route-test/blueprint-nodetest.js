@@ -9,16 +9,42 @@ describe('Acceptance: ember generate and destroy route-test', function() {
   setupTestHooks(this);
   
   it('route-test foo', function() {
-    // pass any additional command line options in the arguments array
     return generateAndDestroy(['route-test', 'foo'], {
-      // define files to assert, and their contents
       files: [
-        // { file: 'app/type/foo.js', contents: ['foo']}
+        {
+          file: 'tests/unit/routes/foo-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('route:foo'"
+          ]
+        }
       ]
     });
   });
+  
   it('in-addon route-test foo', function() {
     return generateAndDestroy(['route-test', 'foo'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/routes/foo-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('route:foo'"
+          ]
+        },
+        {
+          file: 'app/route-test/foo.js',
+          exists: false
+        }
+      ]
+    });
+  });
+  
+  
+  it('dummy route-test foo', function() {
+    return generateAndDestroy(['route-test', 'foo'], {
+      target: 'addon',
       files: [
         {
           file: 'tests/unit/routes/foo-test.js',

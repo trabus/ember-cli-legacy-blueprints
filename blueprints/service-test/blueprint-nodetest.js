@@ -21,5 +21,24 @@ describe('Acceptance: ember generate and destroy service-test', function() {
       ]
     });
   });
+  
+  it('in-addon service-test foo', function() {
+    return generateAndDestroy(['service-test', 'foo'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/services/foo-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('service:foo'"
+          ]
+        },
+        {
+          file: 'app/service-test/foo.js',
+          exists: false 
+        }
+      ]
+    });
+  });
 
 });

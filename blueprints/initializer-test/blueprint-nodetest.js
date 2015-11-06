@@ -23,5 +23,22 @@ describe('Acceptance: ember generate and destroy initializer-test', function() {
       ]
     });
   });
+  
+  it('in-addon initializer-test foo', function() {
+    return generateAndDestroy(['initializer-test', 'foo'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/initializers/foo-test.js',
+          contains: [
+            "import FooInitializer from '../../../initializers/foo';",
+            "module('Unit | Initializer | foo'",
+            "var application;",
+            "FooInitializer.initialize(application);"
+          ]
+        }
+      ]
+    });
+  });
 
 });

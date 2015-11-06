@@ -21,5 +21,20 @@ describe('Acceptance: ember generate and destroy controller-test', function() {
       ]
     });
   });
-
+  
+  it('in-addon controller-test foo', function() {
+    return generateAndDestroy(['controller-test', 'foo'], {
+        target: 'addon',
+        files: [
+          {
+            file: 'tests/unit/controllers/foo-test.js',
+            contains: [
+              "import { moduleFor, test } from 'ember-qunit';",
+              "moduleFor('controller:foo'"
+            ]
+          }
+        ]
+    });
+  });
+  
 });

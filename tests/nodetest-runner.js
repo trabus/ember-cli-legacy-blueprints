@@ -32,7 +32,7 @@ if (optionOrFile === 'all') {
 } else if (process.argv.length > 2)  {
   addFiles(mocha, process.argv.slice(2));
 } else {
-  addFiles(mocha, root + testFiles);
+  addFiles(mocha, testFiles);
   addFiles(mocha, 'blueprints/**/*-nodetest.js');
 }
 

@@ -6,12 +6,7 @@ var BlueprintHelpers   = require('ember-cli-blueprint-test-helpers/lib/helpers/b
 var generateAndDestroy = BlueprintHelpers.generateAndDestroy;
 
 describe('Acceptance: ember generate and destroy helper-addon', function() {
-  setupTestHooks(this, {timeout: 1000});
-  
-  it('helper-addon foo-bar', function() {
-    return generateAndDestroy(['helper-addon', 'foo-bar'], {
-    });
-  });
+  setupTestHooks(this);
   
   it('in-addon helper-addon foo-bar', function() {
     return generateAndDestroy(['helper-addon', 'foo-bar'], {

@@ -6,8 +6,8 @@ var BlueprintHelpers   = require('ember-cli-blueprint-test-helpers/lib/helpers/b
 var generateAndDestroy = BlueprintHelpers.generateAndDestroy;
 
 describe('Acceptance: ember generate and destroy initializer-addon', function() {
-  setupTestHooks(this, {timeout: 1000});
-
+  setupTestHooks(this);
+  
   it('initializer-addon foo', function() {
     // pass any additional command line options in the arguments array
     return generateAndDestroy(['initializer-addon', 'foo'], {
@@ -15,8 +15,8 @@ describe('Acceptance: ember generate and destroy initializer-addon', function() 
       target: 'addon',
       files: [
         { 
-          file: 'app/initializer/foo.js', 
-          contents: ['foo']
+          file: 'app/initializers/foo.js', 
+          contains: "export { default, initialize } from 'my-addon/initializers/foo';"
         }
       ]
     });

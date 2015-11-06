@@ -20,5 +20,24 @@ describe('Acceptance: ember generate and destroy serializer-test', function() {
       ]
     });
   });
+  
+  it('in-addon serializer-test foo', function() {
+    return generateAndDestroy(['serializer-test', 'foo'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/serializers/foo-test.js',
+          contains: [
+            "import { moduleForModel, test } from 'ember-qunit';",
+            "moduleForModel('foo'"
+          ]
+        },
+        {
+          file: 'app/serializer-test/foo.js',
+          exists: false
+        }
+      ]
+    });
+  });
 
 });

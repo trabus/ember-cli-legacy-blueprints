@@ -13,11 +13,11 @@ describe('Acceptance: ember generate and destroy test-helper', function() {
       files: [
         {
           file: 'tests/helpers/foo.js',
-          contains: "import Ember from 'ember';" + EOL +
-                    EOL +
-                    "export default Ember.Test.registerAsyncHelper('foo', function(app) {" + EOL +
-                    EOL +
-                    "});"
+          contains: [
+            "import Ember from 'ember';",
+            "export default Ember.Test.registerAsyncHelper('foo', function(app) {",
+            "});"
+          ]
         }
       ]
     });

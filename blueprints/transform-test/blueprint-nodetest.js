@@ -22,4 +22,19 @@ describe('Acceptance: ember generate and destroy transform-test', function() {
     });
   });
 
+  it('in-addon transform-test foo', function() {
+    return generateAndDestroy(['transform-test', 'foo'], {
+      target: 'addon',
+      files: [
+        {
+          file: 'tests/unit/transforms/foo-test.js',
+          contains: [
+            "import { moduleFor, test } from 'ember-qunit';",
+            "moduleFor('transform:foo'"
+          ]
+        }
+      ]
+    });
+  });
+
 });
