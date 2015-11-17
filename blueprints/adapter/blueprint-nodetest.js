@@ -33,14 +33,14 @@ describe('Acceptance: ember generate and destroy adapter', function() {
     return generateAndDestroy(['adapter', 'foo'], {
       files: [
         {
-          files: 'app/adapters/foo.js',
+          file: 'app/adapters/foo.js',
           contains: [
             "import ApplicationAdapter from \'./application\';",
             "export default ApplicationAdapter.extend({" + EOL + "});"
           ]
         },
         {
-          file:'tests/unit/adapters/foo-test.js',
+          file: 'tests/unit/adapters/foo-test.js',
           contains: [
             "import { moduleFor, test } from 'ember-qunit';",
             "moduleFor('adapter:foo'"
@@ -80,13 +80,19 @@ describe('Acceptance: ember generate and destroy adapter', function() {
 
   it('adapter application cannot extend from --base-class=application', function() {
     return generateAndDestroy(['adapter', 'application', '--base-class=application'], {
-      throws: /Adapters cannot extend from themself/
+      throws: {
+        message: /Adapters cannot extend from themself/,
+        type: 'SilentError'
+      }
     });
   });
 
   it('adapter foo cannot extend from --base-class=foo', function() {
     return generateAndDestroy(['adapter', 'foo', '--base-class=foo'], {
-      throws: /Adapters cannot extend from themself/
+      throws: {
+        message: /Adapters cannot extend from themself/,
+        type: 'SilentError'
+      }
     });
   });
 
@@ -122,6 +128,7 @@ describe('Acceptance: ember generate and destroy adapter', function() {
     return generateAndDestroy(['adapter', 'application'], {
       afterGenerate: function() {
         return generateAndDestroy(['adapter', 'foo'], {
+          skipInit: true,
           files: [
             {
               file:'app/adapters/foo.js',
@@ -140,6 +147,7 @@ describe('Acceptance: ember generate and destroy adapter', function() {
     return generateAndDestroy(['adapter', 'application'], {
       afterGenerate: function() {
         return generateAndDestroy(['adapter', 'foo', '--base-class=bar'], {
+          skipInit: true,
           files: [
             {
               file: 'app/adapters/foo.js',
@@ -469,6 +477,7 @@ describe('Acceptance: ember generate and destroy adapter', function() {
     return generateAndDestroy(['adapter', 'application'], {
       afterGenerate: function() {
         return generateAndDestroy(['adapter', 'foo', '--pod'], {
+          skipInit: true,
           files: [
             {
               file: 'app/foo/adapter.js',
@@ -487,6 +496,7 @@ describe('Acceptance: ember generate and destroy adapter', function() {
     return generateAndDestroy(['adapter', 'application'], {
       afterGenerate: function() {
         return generateAndDestroy(['adapter', 'foo', '--base-class=bar', '--pod'], {
+          skipInit: true,
           files: [
             {
               file: 'app/foo/adapter.js',

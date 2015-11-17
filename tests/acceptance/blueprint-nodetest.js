@@ -13,6 +13,8 @@ describe('Acceptance: legacy-blueprints', function() {
   it('setup', function(){
     return generate(['controller', 'foo'], {
       assertions: [true]
+    }).then(function() {
+      expect(true);
     });
   });
   

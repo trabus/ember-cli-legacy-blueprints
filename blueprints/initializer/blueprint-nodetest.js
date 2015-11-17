@@ -13,18 +13,18 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file:'app/initializers/foo.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         },
         {
           file:'tests/unit/initializers/foo-test.js',
-          contains: "import FooInitializer from '../../../initializers/foo';"
+          contains: "import { initialize } from '../../../initializers/foo';"
         }
       ]
     });
@@ -35,18 +35,18 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file:'app/initializers/foo/bar.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo/bar'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         },
         {
           file:'tests/unit/initializers/foo/bar-test.js',
-          contains: "import FooBarInitializer from '../../../../initializers/foo/bar';"
+          contains: "import { initialize } from '../../../../initializers/foo/bar';"
         }
       ]
     });
@@ -58,13 +58,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'addon/initializers/foo.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         },
         {
@@ -86,13 +86,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'addon/initializers/foo/bar.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo/bar'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         },
         {
@@ -114,13 +114,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'tests/dummy/app/initializers/foo.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         },
         {
@@ -141,13 +141,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'tests/dummy/app/initializers/foo/bar.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo/bar'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         },
         {  
@@ -168,13 +168,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'lib/my-addon/addon/initializers/foo.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         },
         {
@@ -196,13 +196,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'lib/my-addon/addon/initializers/foo/bar.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo/bar'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         },
         {
@@ -227,13 +227,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'app/initializers/foo.js', 
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         }
       ]
@@ -246,13 +246,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'app/initializers/foo.js', 
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         }
       ]
@@ -264,13 +264,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'app/initializers/foo/bar.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo/bar'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         }
       ]
@@ -284,13 +284,13 @@ describe('Acceptance: ember generate and destroy initializer', function() {
       files: [
         {
           file: 'app/initializers/foo/bar.js',
-          contains: "export function initialize(/* application */) {" + EOL +
+          contains: "export function initialize(/* container, application */) {" + EOL +
                     "  // application.inject('route', 'foo', 'service:foo');" + EOL +
                     "}" + EOL +
                     "" + EOL+
                     "export default {" + EOL +
                     "  name: 'foo/bar'," + EOL +
-                    "  initialize: initialize" + EOL +
+                    "  initialize" + EOL +
                     "};"
         }
       ]

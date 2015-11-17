@@ -473,18 +473,19 @@ describe('Acceptance: ember generate and destroy route', function() {
   });
 
   it('route application --pod', function() {
-    // need to run `initApp` manually here instead of using `generate` helper
-    // because we need to remove the templates/application.hbs file to prevent
-    // a prompt (due to a conflict)
-    return destroy(['template', 'application'], {
-      afterDestroy: function() {
-        return generateAndDestroy(['route', 'application', '--pod'], {
-          files: [
-            {
-              file: 'app/router.js',
-              doesNotContain: "this.route('application');"
-            }
-          ]
+    return generateAndDestroy(['route', 'foo'], {
+      afterGenerate: function(){
+        return remove(path.join('app', 'templates', 'application.hbs'))
+          .then(function() {
+            return generateAndDestroy(['route', 'application', '--pod'], {
+              skipInit: true,
+              files: [
+                {
+                  file: 'app/router.js',
+                  doesNotContain: "this.route('application');"
+                }
+              ]
+            });
         });
       }
     });

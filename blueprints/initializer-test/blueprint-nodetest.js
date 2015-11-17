@@ -14,10 +14,10 @@ describe('Acceptance: ember generate and destroy initializer-test', function() {
         {
           file: 'tests/unit/initializers/foo-test.js',
           contains: [
-            "import FooInitializer from '../../../initializers/foo';",
+            "import { initialize } from '../../../initializers/foo';",
             "module('Unit | Initializer | foo'",
-            "var application;",
-            "FooInitializer.initialize(application);"
+            "var registry, application;",
+            "initialize(registry, application);"
           ]
         }
       ]
@@ -31,10 +31,10 @@ describe('Acceptance: ember generate and destroy initializer-test', function() {
         {
           file: 'tests/unit/initializers/foo-test.js',
           contains: [
-            "import FooInitializer from '../../../initializers/foo';",
+            "import { initialize } from '../../../initializers/foo';",
             "module('Unit | Initializer | foo'",
-            "var application;",
-            "FooInitializer.initialize(application);"
+            "var registry, application;",
+            "initialize(registry, application);"
           ]
         }
       ]

@@ -16,11 +16,11 @@ describe('Acceptance: ember generate and destroy transform', function() {
           contains: [
             "import DS from 'ember-data';",
             'export default DS.Transform.extend({' + EOL +
-            '  deserialize: function(serialized) {' + EOL +
+            '  deserialize(serialized) {' + EOL +
             '    return serialized;' + EOL +
             '  },' + EOL +
             EOL +
-            '  serialize: function(deserialized) {' + EOL +
+            '  serialize(deserialized) {' + EOL +
             '    return deserialized;' + EOL +
             '  }' + EOL +
             '});'
@@ -45,11 +45,11 @@ describe('Acceptance: ember generate and destroy transform', function() {
           contains: [
             "import DS from 'ember-data';",
             'export default DS.Transform.extend({' + EOL +
-            '  deserialize: function(serialized) {' + EOL +
+            '  deserialize(serialized) {' + EOL +
             '    return serialized;' + EOL +
             '  },' + EOL +
             '' + EOL +
-            '  serialize: function(deserialized) {' + EOL +
+            '  serialize(deserialized) {' + EOL +
             '    return deserialized;' + EOL +
             '  }' + EOL +
             '});'
@@ -75,11 +75,11 @@ describe('Acceptance: ember generate and destroy transform', function() {
           contains: [
             "import DS from 'ember-data';",
             'export default DS.Transform.extend({' + EOL +
-            '  deserialize: function(serialized) {' + EOL +
+            '  deserialize(serialized) {' + EOL +
             '    return serialized;' + EOL +
             '  },' + EOL +
             EOL +
-            '  serialize: function(deserialized) {' + EOL +
+            '  serialize(deserialized) {' + EOL +
             '    return deserialized;' + EOL +
             '  }' + EOL +
             '});'
@@ -111,11 +111,11 @@ describe('Acceptance: ember generate and destroy transform', function() {
           contains: [
             "import DS from 'ember-data';",
             'export default DS.Transform.extend({' + EOL +
-            '  deserialize: function(serialized) {' + EOL +
+            '  deserialize(serialized) {' + EOL +
             '    return serialized;' + EOL +
             '  },' + EOL +
             '' + EOL +
-            '  serialize: function(deserialized) {' + EOL +
+            '  serialize(deserialized) {' + EOL +
             '    return deserialized;' + EOL +
             '  }' + EOL +
             '});'
@@ -150,11 +150,11 @@ describe('Acceptance: ember generate and destroy transform', function() {
           contains: [
             "import DS from 'ember-data';",
             'export default DS.Transform.extend({' + EOL +
-            '  deserialize: function(serialized) {' + EOL +
+            '  deserialize(serialized) {' + EOL +
             '    return serialized;' + EOL +
             '  },' + EOL +
             EOL +
-            '  serialize: function(deserialized) {' + EOL +
+            '  serialize(deserialized) {' + EOL +
             '    return deserialized;' + EOL +
             '  }' + EOL +
             '});'
@@ -180,11 +180,11 @@ describe('Acceptance: ember generate and destroy transform', function() {
           contains: [
             "import DS from 'ember-data';",
             'export default DS.Transform.extend({' + EOL +
-            '  deserialize: function(serialized) {' + EOL +
+            '  deserialize(serialized) {' + EOL +
             '    return serialized;' + EOL +
             '  },' + EOL +
             EOL +
-            '  serialize: function(deserialized) {' + EOL +
+            '  serialize(deserialized) {' + EOL +
             '    return deserialized;' + EOL +
             '  }' + EOL +
             '});'
@@ -209,11 +209,11 @@ describe('Acceptance: ember generate and destroy transform', function() {
           contains: [
             "import DS from 'ember-data';",
             'export default DS.Transform.extend({' + EOL +
-            '  deserialize: function(serialized) {' + EOL +
+            '  deserialize(serialized) {' + EOL +
             '    return serialized;' + EOL +
             '  },' + EOL +
             '' + EOL +
-            '  serialize: function(deserialized) {' + EOL +
+            '  serialize(deserialized) {' + EOL +
             '    return deserialized;' + EOL +
             '  }' + EOL +
             '});'
@@ -239,11 +239,11 @@ describe('Acceptance: ember generate and destroy transform', function() {
           contains: [
             "import DS from 'ember-data';",
             'export default DS.Transform.extend({' + EOL +
-            '  deserialize: function(serialized) {' + EOL +
+            '  deserialize(serialized) {' + EOL +
             '    return serialized;' + EOL +
             '  },' + EOL +
             '' + EOL +
-            '  serialize: function(deserialized) {' + EOL +
+            '  serialize(deserialized) {' + EOL +
             '    return deserialized;' + EOL +
             '  }' + EOL +
             '});'

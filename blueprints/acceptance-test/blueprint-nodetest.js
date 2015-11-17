@@ -15,9 +15,8 @@ describe('Acceptance: ember generate and destroy acceptance-test', function() {
         {
           file: 'tests/acceptance/foo-test.js',
           contains: [
-            "import { test } from 'qunit';",
-            "import moduleForAcceptance from 'my-app/tests/helpers/module-for-acceptance';",
-            "moduleForAcceptance('Acceptance | foo');",
+            "import { module, test } from 'qunit';",
+            "module('Acceptance | foo', {",
             "test('visiting /foo', function(assert) {",
             "visit('/foo');",
             "andThen(function() {",
@@ -35,9 +34,8 @@ describe('Acceptance: ember generate and destroy acceptance-test', function() {
         {
           file: 'tests/acceptance/foo-test.js',
           contains: [
-            "import { test } from 'qunit';",
-            "import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';",
-            "moduleForAcceptance('Acceptance | foo');",
+            "import { module, test } from 'qunit';",
+            "module('Acceptance | foo', {",
             "test('visiting /foo', function(assert) {",
             "visit('/foo');",
             "andThen(function() {",
@@ -59,9 +57,8 @@ describe('Acceptance: ember generate and destroy acceptance-test', function() {
           {
             file: 'tests/acceptance/foo/bar-test.js',
             contains: [
-              "import { test } from 'qunit';",
-              "import moduleForAcceptance from '../../../tests/helpers/module-for-acceptance';",
-              "moduleForAcceptance('Acceptance | foo/bar');",
+              "import { module, test } from 'qunit';",
+              "module('Acceptance | foo/bar', {",
               "test('visiting /foo/bar', function(assert) {",
               "visit('/foo/bar');",
               "andThen(function() {",
